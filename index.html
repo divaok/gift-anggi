@@ -1,16 +1,39 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Happy Birthday Anggi ❤️</title>
+<title>For Anggi, Sayangku 💗</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 
 <style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+:root {
+    --pink: #d85b82;
+    --pink-light: #f9dce7;
+    --pink-dark: #7d294c;
+    --cream: #fff8f5;
+    --text: #5d3949;
+    --muted: #a98795;
+    --dark: #24151e;
 }
 
 html {
@@ -18,55 +41,157 @@ html {
 }
 
 body {
-    font-family: "Segoe UI", sans-serif;
-    background: #fff5f8;
-    color: #4a2633;
+    font-family: "DM Sans", sans-serif;
+    background: var(--cream);
+    color: var(--text);
     overflow-x: hidden;
 }
 
-/* =========================
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* =====================================================
+   FLOATING HEART
+===================================================== */
+
+.hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 50;
+}
+
+.hearts span {
+    position: absolute;
+    bottom: -50px;
+
+    color: #e89bb766;
+    font-size: 28px;
+
+    animation: naik 13s linear infinite;
+}
+
+.hearts span:nth-child(1) {
+    left: 8%;
+    animation-delay: 1s;
+}
+
+.hearts span:nth-child(2) {
+    left: 25%;
+    animation-delay: 5s;
+}
+
+.hearts span:nth-child(3) {
+    left: 45%;
+    animation-delay: 2s;
+}
+
+.hearts span:nth-child(4) {
+    left: 70%;
+    animation-delay: 7s;
+}
+
+.hearts span:nth-child(5) {
+    left: 90%;
+    animation-delay: 4s;
+}
+
+@keyframes naik {
+
+    0% {
+        transform: translateY(0) rotate(0);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(-110vh)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+
+}
+
+
+/* =====================================================
    NAVBAR
-========================= */
+===================================================== */
 
 .navbar {
-    position: fixed;
+    position: absolute;
+
     top: 0;
     left: 0;
+
     width: 100%;
-    height: 65px;
+
+    z-index: 20;
+
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 0 7%;
-    background: rgba(255,255,255,.88);
-    backdrop-filter: blur(10px);
-    z-index: 1000;
-    box-shadow: 0 2px 15px rgba(0,0,0,.06);
+    align-items: center;
+
+    padding: 28px 7%;
+
+    color: white;
 }
 
 .logo {
-    color: #d94b73;
-    font-weight: 700;
-    font-size: 18px;
+    font-family: "Great Vibes", cursive;
+    font-size: 27px;
 }
 
-.music-btn {
-    border: none;
-    background: #ffe0e9;
-    color: #d94b73;
-    padding: 10px 16px;
-    border-radius: 30px;
-    cursor: pointer;
-    font-weight: 600;
+.logo span {
+    color: #ffd5e3;
 }
 
-/* =========================
+.music-toggle {
+    border: 1px solid #ffffff66;
+
+    background: #ffffff1c;
+
+    color: white;
+
+    width: 43px;
+    height: 43px;
+
+    border-radius: 50%;
+
+    font-size: 17px;
+
+    backdrop-filter: blur(8px);
+
+    transition: .3s;
+}
+
+.music-toggle:hover {
+    background: #ffffff32;
+    transform: scale(1.08);
+}
+
+
+/* =====================================================
    HERO
-========================= */
+===================================================== */
 
 .hero {
     min-height: 100vh;
+
     position: relative;
+
     overflow: hidden;
 
     display: flex;
@@ -74,739 +199,3078 @@ body {
     justify-content: center;
 
     text-align: center;
+
+    color: white;
+
     padding: 100px 20px 60px;
 
     background:
-        radial-gradient(circle at top, #ffe6ee, #fff5f8 55%, #ffeaf1);
+        linear-gradient(
+            135deg,
+            rgba(48,20,34,.88),
+            rgba(111,43,70,.72)
+        ),
+        url("images/foto-utama.jpg")
+        center/cover no-repeat;
 }
-
-/* dekorasi */
-
-.hero::before {
-    content: "♥";
-    position: absolute;
-    top: 12%;
-    left: 8%;
-    font-size: 45px;
-    color: rgba(217,75,115,.12);
-    animation: floating 4s ease-in-out infinite;
-}
-
-.hero::after {
-    content: "♥";
-    position: absolute;
-    right: 8%;
-    bottom: 15%;
-    font-size: 60px;
-    color: rgba(217,75,115,.1);
-    animation: floating 5s ease-in-out infinite reverse;
+.hero > * {
+    position: relative;
+    z-index: 2;
 }
 
 .hero-content {
     position: relative;
     z-index: 5;
-    max-width: 900px;
-    width: 100%;
+
+    max-width: 850px;
+
+    animation:
+        heroAppear
+        1.2s
+        ease;
 }
 
-.hero h1 {
-    font-size: clamp(30px, 5vw, 60px);
-    color: #c93864;
-    line-height: 1.15;
-    margin-bottom: 15px;
+/* FOTO UTAMA AGAR TIDAK CROP */
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(48,20,34,.45),
+            rgba(111,43,70,.35)
+        ),
+        url("images/foto-utama.jpg")
+        center center / contain
+        no-repeat;
+
+    z-index: 0;
+
+    pointer-events: none;
 }
 
-.hero p {
-    font-size: 18px;
-    color: #795361;
-    margin-bottom: 30px;
+
+/* LAPISAN GELAP AGAR TEKS TETAP TERBACA */
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(35,15,25,.30),
+            rgba(100,35,60,.18)
+        );
+
+    z-index: 1;
+
+    pointer-events: none;
 }
 
-/* =========================
-   FOTO KEPALA
-========================= */
 
-.head-photo-wrapper {
+/* GLOW */
+
+.hero-glow {
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(20px);
+
+    pointer-events: none;
+}
+
+.glow-1 {
+    width: 350px;
+    height: 350px;
+
+    background: rgba(255,139,178,.22);
+
+    top: -150px;
+    left: -100px;
+
+    animation: glowMove 7s ease-in-out infinite;
+}
+
+.glow-2 {
+    width: 300px;
+    height: 300px;
+
+    background: rgba(255,203,221,.15);
+
+    bottom: -130px;
+    right: -80px;
+
+    animation: glowMove 9s ease-in-out infinite reverse;
+}
+
+@keyframes glowMove {
+
+    0%,100% {
+        transform: translate(0,0);
+    }
+
+    50% {
+        transform: translate(40px,30px);
+    }
+
+}
+
+
+/* BALON 20 */
+
+.birthday-balloons {
+    position: absolute;
+
+    top: 8%;
+    right: 8%;
+
     display: flex;
-    justify-content: center;
-    align-items: center;
 
-    margin: 20px auto 30px;
+    gap: 12px;
 
-    perspective: 1000px;
-}
+    z-index: 2;
 
-.head-photo {
-    width: 220px;
-    max-width: 65vw;
-    height: auto;
-
-    display: block;
-
-    object-fit: contain;
-
-    filter: drop-shadow(0 15px 20px rgba(120,40,70,.20));
-
-    transform-origin: 50% 75%;
-
-    animation: gelengKepala 3s ease-in-out infinite;
-}
-
-/*
-   GELENG-GELENG
-
-   kiri
-   tengah
-   kanan
-   tengah
-*/
-
-@keyframes gelengKepala {
-
-    0% {
-        transform: rotate(0deg);
-    }
-
-    20% {
-        transform: rotate(-12deg);
-    }
-
-    40% {
-        transform: rotate(12deg);
-    }
-
-    60% {
-        transform: rotate(-8deg);
-    }
-
-    80% {
-        transform: rotate(8deg);
-    }
-
-    100% {
-        transform: rotate(0deg);
-    }
-}
-
-/* =========================
-   BALON
-========================= */
-
-.balloons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin: 20px 0;
+    transform: rotate(5deg);
 }
 
 .balloon {
-    width: 45px;
-    height: 55px;
+    position: relative;
 
-    background: #ef6f92;
-    border-radius: 50% 50% 45% 45%;
+    width: 105px;
+    height: 135px;
+
+    border-radius:
+        50% 50%
+        45% 45%;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
+    box-shadow:
+        inset -15px -20px 25px rgba(0,0,0,.12),
+        inset 10px 10px 20px rgba(255,255,255,.25),
+        0 15px 35px rgba(0,0,0,.2);
+
+    animation:
+        balloonFloat
+        3.5s
+        ease-in-out
+        infinite;
+}
+
+.balloon span {
+    font-family: "Playfair Display", serif;
+
+    font-size: 75px;
+
+    font-weight: 700;
+
     color: white;
-    font-weight: bold;
 
-    position: relative;
-
-    animation: balloonFloat 3s ease-in-out infinite;
+    text-shadow:
+        3px 5px 5px rgba(0,0,0,.2);
 }
 
-.balloon:nth-child(2) {
-    animation-delay: .3s;
+.balloon-2 {
+    background:
+        radial-gradient(
+            circle at 30% 20%,
+            #ffb5cc,
+            #df5d87 65%,
+            #b63e68
+        );
 }
 
-.balloon:nth-child(3) {
-    animation-delay: .6s;
+.balloon-0 {
+    background:
+        radial-gradient(
+            circle at 30% 20%,
+            #ffd0df,
+            #e8789e 65%,
+            #c64e76
+        );
+
+    animation-delay: .5s;
 }
 
-.balloon::after {
-    content: "";
+.balloon i {
     position: absolute;
-    bottom: -35px;
-    left: 50%;
+
+    bottom: -45px;
 
     width: 1px;
-    height: 35px;
+    height: 50px;
 
-    background: #b77;
+    background: rgba(255,255,255,.6);
 }
 
 @keyframes balloonFloat {
+
+    0%,100% {
+        transform:
+            translateY(0)
+            rotate(-3deg);
+    }
+
+    50% {
+        transform:
+            translateY(-18px)
+            rotate(3deg);
+    }
+
+}
+
+
+/* SMALL BALLOONS */
+
+.small-balloons span {
+    position: absolute;
+
+    font-size: 35px;
+
+    z-index: 2;
+
+    animation:
+        smallBalloon
+        6s
+        ease-in-out
+        infinite;
+}
+
+.small-balloons span:nth-child(1) {
+    left: 7%;
+    top: 20%;
+}
+
+.small-balloons span:nth-child(2) {
+    left: 18%;
+    bottom: 18%;
+    animation-delay: 2s;
+}
+
+.small-balloons span:nth-child(3) {
+    right: 12%;
+    bottom: 20%;
+    animation-delay: 1s;
+}
+
+.small-balloons span:nth-child(4) {
+    right: 25%;
+    top: 25%;
+    animation-delay: 3s;
+}
+
+@keyframes smallBalloon {
+
+    0%,100% {
+        transform:
+            translateY(0)
+            rotate(-5deg);
+    }
+
+    50% {
+        transform:
+            translateY(-25px)
+            rotate(8deg);
+    }
+
+}
+
+
+/* CHARACTER */
+
+.head-character {
+    position: absolute;
+
+    left: 5%;
+    bottom: 7%;
+
+    width: 230px;
+
+    z-index: 3;
+
+    transition:
+        transform .15s ease-out;
+
+    animation:
+        characterFloat
+        4s
+        ease-in-out
+        infinite;
+}
+
+.head-character img {
+    width: 100%;
+
+    display: block;
+
+    filter:
+        drop-shadow(
+            0 20px 20px
+            rgba(0,0,0,.35)
+        );
+}
+
+@keyframes characterFloat {
+
+    0%,100% {
+        transform:
+            translateY(0)
+            rotate(-2deg);
+    }
+
+    50% {
+        transform:
+            translateY(-10px)
+            rotate(2deg);
+    }
+
+}
+
+
+/* HERO CONTENT */
+
+.hero-content {
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 850px;
+
+    animation:
+        heroAppear
+        1.2s
+        ease;
+}
+
+@keyframes heroAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+.eyebrow {
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    font-weight: 700;
+
+    color: #eaa4bb;
+}
+
+.hero .eyebrow {
+    color: #ffd7e4;
+}
+
+.mini-title {
+    margin-top: 18px;
+
+    font-family:
+        "Great Vibes",
+        cursive;
+
+    font-size: 24px;
+
+    color: #ffd0df;
+}
+
+.hero h1 {
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(42px,7vw,78px);
+
+    line-height: 1.1;
+
+    font-weight: 500;
+
+    margin: 12px 0 20px;
+
+    text-shadow:
+        0 10px 30px
+        rgba(0,0,0,.25);
+}
+
+.hero h1 span {
+    display: block;
+
+    font-family:
+        "Great Vibes",
+        cursive;
+
+    font-size: 1.12em;
+
+    color: #ffc1d6;
+
+    margin-top: 10px;
+}
+
+.hero h1 small {
+    display: block;
+
+    font-family:
+        "Great Vibes",
+        cursive;
+
+    font-size: .65em;
+
+    color: white;
+
+    margin-top: 8px;
+}
+
+.hero-description {
+    max-width: 550px;
+
+    margin: auto;
+
+    color: #ffe9f0;
+
+    font-size: 15px;
+
+    line-height: 1.9;
+}
+
+
+/* HERO HEARTS */
+
+.hero-hearts span {
+    position: absolute;
+
+    color: #ffb5cc66;
+
+    font-size: 30px;
+
+    z-index: 2;
+
+    animation:
+        heartFloat
+        9s
+        linear
+        infinite;
+}
+
+.hero-hearts span:nth-child(1) {
+    left: 20%;
+    bottom: -30px;
+}
+
+.hero-hearts span:nth-child(2) {
+    left: 35%;
+    bottom: -30px;
+    animation-delay: 3s;
+}
+
+.hero-hearts span:nth-child(3) {
+    left: 55%;
+    bottom: -30px;
+    animation-delay: 1s;
+}
+
+.hero-hearts span:nth-child(4) {
+    left: 70%;
+    bottom: -30px;
+    animation-delay: 5s;
+}
+
+.hero-hearts span:nth-child(5) {
+    left: 82%;
+    bottom: -30px;
+    animation-delay: 2s;
+}
+
+.hero-hearts span:nth-child(6) {
+    left: 45%;
+    bottom: -30px;
+    animation-delay: 7s;
+}
+
+@keyframes heartFloat {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(0);
+
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(-110vh)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+
+}
+
+
+/* BUTTON */
+
+.primary-button {
+    position: relative;
+
+    border: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f28aaa,
+            #c94d78
+        );
+
+    color: white;
+
+    padding: 16px 34px;
+
+    border-radius: 50px;
+
+    margin-top: 30px;
+
+    font-weight: 700;
+
+    font-size: 14px;
+
+    box-shadow:
+        0 12px 35px
+        rgba(0,0,0,.25);
+
+    transition: .3s;
+
+    overflow: hidden;
+}
+
+.primary-button:hover {
+    transform:
+        translateY(-4px)
+        scale(1.03);
+}
+
+.primary-button:before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 100%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.35),
+            transparent
+        );
+
+    transition: .6s;
+}
+
+.primary-button:hover:before {
+    left: 100%;
+}
+
+.scroll-hint {
+    margin-top: 35px;
+
+    font-size: 11px;
+
+    color: #ffffff99;
+
+    letter-spacing: .5px;
+}
+
+.scroll-hint span {
+    display: block;
+
+    font-size: 22px;
+
+    margin-top: 8px;
+
+    animation:
+        scrollDown
+        1.5s
+        infinite;
+}
+
+@keyframes scrollDown {
+
     0%,100% {
         transform: translateY(0);
     }
 
     50% {
-        transform: translateY(-12px);
+        transform: translateY(8px);
     }
+
 }
 
-/* =========================
-   BUTTON
-========================= */
 
-.btn-love {
-    display: inline-block;
+/* =====================================================
+   GENERAL SECTION
+===================================================== */
 
-    padding: 13px 25px;
+.section {
+    width: min(1100px,92%);
 
-    border-radius: 30px;
+    margin: auto;
 
-    background: #d94b73;
-    color: white;
-
-    text-decoration: none;
-
-    font-weight: 600;
-
-    box-shadow: 0 8px 20px rgba(217,75,115,.25);
-
-    transition: .3s;
-}
-
-.btn-love:hover {
-    transform: translateY(-3px);
-    background: #c93864;
-}
-
-/* =========================
-   SECTION
-========================= */
-
-section {
-    padding: 90px 7%;
+    padding: 110px 0;
 }
 
 .section-title {
     text-align: center;
-    color: #c93864;
-    font-size: 32px;
-    margin-bottom: 40px;
+
+    margin-bottom: 55px;
 }
 
-/* =========================
+.section-title h2 {
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(30px,5vw,46px);
+
+    font-weight: 500;
+
+    color: var(--pink-dark);
+
+    margin-top: 12px;
+}
+
+.section-title p {
+    max-width: 540px;
+
+    margin: 15px auto 0;
+
+    color: var(--muted);
+
+    line-height: 1.8;
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
    LETTER
-========================= */
+===================================================== */
+
+.letter-section {
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            #f9dce788,
+            transparent 30%
+        ),
+        var(--cream);
+}
 
 .letter {
-    max-width: 850px;
+    max-width: 800px;
+
     margin: auto;
 
-    background: white;
+    padding:
+        clamp(28px,6vw,65px);
 
-    padding: 45px;
-
-    border-radius: 20px;
-
-    box-shadow: 0 10px 35px rgba(100,40,60,.08);
-
-    line-height: 1.9;
-
-    font-size: 16px;
-}
-
-.letter p {
-    margin-bottom: 18px;
-}
-
-.signature {
-    text-align: right;
-    margin-top: 30px;
-    color: #d94b73;
-    font-weight: 600;
-}
-
-/* =========================
-   MEMORY
-========================= */
-
-.memory-grid {
-    max-width: 1000px;
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 20px;
-}
-
-.memory-card {
-    background: white;
-
-    border-radius: 18px;
-
-    overflow: hidden;
-
-    box-shadow: 0 8px 25px rgba(100,40,60,.08);
-
-    cursor: pointer;
-
-    transition: .3s;
-}
-
-.memory-card:hover {
-    transform: translateY(-5px);
-}
-
-.memory-card img,
-.memory-card video {
-    width: 100%;
-    height: 280px;
-
-    object-fit: cover;
-
-    display: block;
-}
-
-.memory-card video {
-    background: #111;
-}
-
-/* =========================
-   CLOSING
-========================= */
-
-.closing {
-    min-height: 80vh;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
+    position: relative;
 
     background:
         linear-gradient(
-            rgba(70,20,40,.55),
-            rgba(70,20,40,.55)
+            #fffdf8e8,
+            #fffdf8e8
         ),
-        url("images/foto-penutup.jpg") center/cover no-repeat;
+        url("images/kertas.jpg")
+        center/cover;
 
-    color: white;
+    border: 1px solid #ead9c9;
+
+    box-shadow:
+        0 20px 60px
+        #9c5b7415;
+
+    border-radius: 4px;
 }
 
-.closing-content {
+.letter:before {
+    content: "♥";
+
+    position: absolute;
+
+    top: 18px;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    color: #dc8ca7;
+
+    font-size: 18px;
+}
+
+.letter:after {
+    content: "❀";
+
+    position: absolute;
+
+    bottom: 20px;
+    right: 28px;
+
+    color: #dca0b4;
+
+    font-size: 45px;
+}
+
+.letter-top {
+    font-family:
+        "Great Vibes",
+        cursive;
+
+    font-size: 30px;
+
+    color: #bb718e;
+
+    margin-bottom: 25px;
+}
+
+.letter p {
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 17px;
+
+    line-height: 2;
+
+    margin-bottom: 18px;
+
+    color: #684b59;
+}
+
+.signature {
+    font-family:
+        "Great Vibes",
+        cursive;
+
+    color: #c56a8c;
+
+    font-size: 30px;
+
+    text-align: right;
+
+    margin-top: 30px;
+}
+
+
+/* =====================================================
+   ALBUM KENANGAN
+===================================================== */
+
+.memories-section {
+
+    position: relative;
+
+    overflow: hidden;
+
+    padding:
+        130px 6%
+        120px;
+
+    background:
+
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(244,180,196,.25),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 90% 70%,
+            rgba(217,164,183,.20),
+            transparent 30%
+        ),
+
+        #f8efec;
+}
+
+
+/* DECORATION */
+
+.memories-bg {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+}
+
+.memories-bg span {
+    position: absolute;
+
+    color:
+        rgba(181,111,133,.14);
+
+    font-size: 30px;
+
+    animation:
+        memoryFloat
+        6s
+        ease-in-out
+        infinite;
+}
+
+.memories-bg span:nth-child(1) {
+    top: 8%;
+    left: 5%;
+}
+
+.memories-bg span:nth-child(2) {
+    top: 20%;
+    right: 8%;
+    animation-delay: 1s;
+}
+
+.memories-bg span:nth-child(3) {
+    top: 50%;
+    left: 8%;
+    animation-delay: 2s;
+}
+
+.memories-bg span:nth-child(4) {
+    bottom: 25%;
+    right: 7%;
+    animation-delay: 3s;
+}
+
+.memories-bg span:nth-child(5) {
+    bottom: 8%;
+    left: 45%;
+    animation-delay: 4s;
+}
+
+@keyframes memoryFloat {
+
+    0%,100% {
+        transform:
+            translateY(0)
+            rotate(0);
+    }
+
+    50% {
+        transform:
+            translateY(-18px)
+            rotate(10deg);
+    }
+
+}
+
+
+/* HEADER */
+
+.memories-header {
+    position: relative;
+
+    z-index: 2;
+
     max-width: 700px;
+
+    margin:
+        0 auto
+        80px;
+
+    text-align: center;
 }
 
-.closing h2 {
-    font-size: clamp(32px, 5vw, 55px);
+.memories-label {
+    color: #a85c78;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    font-weight: 700;
+
+    margin-bottom: 18px;
+}
+
+.memories-header h2 {
+    margin: 0;
+
+    color: #39242c;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(42px,6vw,72px);
+
+    line-height: 1.05;
+
+    font-weight: 400;
+}
+
+.memories-header h2 span {
+    display: block;
+
+    color: #b4617e;
+
+    font-family:
+        "Great Vibes",
+        cursive;
+
+    font-size: 1.15em;
+
+    margin-top: 8px;
+}
+
+.memories-header p {
+    max-width: 520px;
+
+    margin:
+        25px auto 0;
+
+    color: #806b72;
+
+    font-size: 15px;
+
+    line-height: 1.9;
+}
+
+
+/* =====================================================
+   ALBUM COVER
+===================================================== */
+
+.memories-album-cover {
+
+    position: relative;
+
+    max-width: 560px;
+
+    margin:
+        0 auto
+        150px;
+
+    z-index: 2;
+}
+
+.album-paper {
+
+    position: relative;
+
+    min-height: 440px;
+
+    padding: 60px 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+
+        linear-gradient(
+            rgba(255,255,255,.45),
+            rgba(255,255,255,.45)
+        ),
+
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 5px,
+            rgba(160,120,120,.025) 6px
+        ),
+
+        #e9cfd3;
+
+    box-shadow:
+        0 35px 70px
+        rgba(72,35,46,.16);
+
+    transform: rotate(-2deg);
+}
+
+.album-paper:before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 14px;
+
+    border:
+        1px solid
+        rgba(122,71,87,.25);
+}
+
+.album-tape {
+
+    position: absolute;
+
+    width: 100px;
+    height: 30px;
+
+    top: -13px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%)
+        rotate(2deg);
+
+    background:
+        rgba(255,245,222,.72);
+}
+
+.album-cover-content {
+
+    text-align: center;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.album-small {
+
+    display: block;
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    color: #805665;
+
     margin-bottom: 20px;
 }
 
-.closing p {
-    font-size: 18px;
-    line-height: 1.8;
+.album-cover-content h3 {
+
+    margin: 0;
+
+    color: #4a2a35;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 44px;
+
+    font-weight: 400;
+
+    line-height: 1.1;
 }
 
-/* =========================
-   LIGHTBOX
-========================= */
+.album-cover-content h3 strong {
 
-.lightbox {
+    display: block;
+
+    color: #a95875;
+
+    font-family:
+        "Great Vibes",
+        cursive;
+
+    font-size: 1.5em;
+
+    font-weight: 400;
+}
+
+.album-line {
+
+    width: 90px;
+
+    height: 1px;
+
+    margin:
+        25px auto;
+
+    background: #a85c78;
+}
+
+.album-cover-content p {
+
+    margin: 0;
+
+    color: #563641;
+
+    font-family:
+        "Great Vibes",
+        cursive;
+
+    font-size: 30px;
+}
+
+.album-date {
+
+    display: block;
+
+    margin-top: 18px;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    color: #886873;
+
+    text-transform: uppercase;
+}
+
+.album-flower {
+
+    position: absolute;
+
+    font-size: 50px;
+
+    color: #b4617e;
+
+    opacity: .7;
+}
+
+.flower-left {
+
+    left: 35px;
+    bottom: 35px;
+
+    transform: rotate(-20deg);
+}
+
+.flower-right {
+
+    right: 35px;
+    top: 40px;
+
+    transform: rotate(20deg);
+}
+
+.album-stamp {
+
+    position: absolute;
+
+    right: 35px;
+    bottom: 30px;
+
+    width: 55px;
+    height: 55px;
+
+    border:
+        1px solid
+        rgba(130,70,90,.4);
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #a95875;
+
+    font-size: 20px;
+
+    transform: rotate(12deg);
+}
+
+
+/* =====================================================
+   MEMORY ITEM
+===================================================== */
+
+.memory-item {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 1050px;
+
+    margin:
+        0 auto
+        150px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 100px;
+
+    align-items: center;
+}
+
+.memory-number {
+
+    position: absolute;
+
+    top: -55px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 105px;
+
+    color:
+        rgba(166,91,116,.055);
+
+    z-index: -1;
+}
+
+
+/* PHOTO */
+
+.memory-photo {
+
+    position: relative;
+
+    width: 100%;
+
+    max-width: 460px;
+
+    padding:
+        14px
+        14px
+        55px;
+
+    background: white;
+
+    box-shadow:
+        0 25px 50px
+        rgba(62,32,43,.15);
+
+    transition:
+        transform .5s ease,
+        box-shadow .5s ease;
+}
+
+.photo-left {
+
+    transform:
+        rotate(-3deg);
+}
+
+.photo-right {
+
+    transform:
+        rotate(3deg);
+
+    justify-self: end;
+}
+
+.memory-photo:hover {
+
+    transform:
+        rotate(0)
+        translateY(-10px)
+        scale(1.02);
+
+    box-shadow:
+        0 35px 65px
+        rgba(62,32,43,.20);
+}
+
+.memory-image {
+
+    display: block;
+
+    width: 100%;
+
+    aspect-ratio: 4 / 3;
+
+    object-fit: cover;
+
+    cursor: pointer;
+
+    filter:
+        saturate(.92);
+
+    transition:
+        filter .4s ease;
+}
+
+.memory-photo:hover
+.memory-image {
+
+    filter:
+        saturate(1.08);
+}
+
+
+/* TAPE */
+
+.photo-tape {
+
+    position: absolute;
+
+    width: 85px;
+    height: 27px;
+
+    top: -13px;
+    left: 50%;
+
+    transform:
+        translateX(-50%)
+        rotate(-3deg);
+
+    background:
+        rgba(255,241,209,.75);
+
+    z-index: 3;
+}
+
+
+/* HEART */
+
+.photo-heart {
+
+    position: absolute;
+
+    right: 20px;
+    bottom: 15px;
+
+    color: #bd6682;
+
+    font-size: 25px;
+
+    font-family: serif;
+}
+
+
+/* STORY */
+
+.memory-story {
+
+    position: relative;
+}
+
+.memory-label {
+
+    display: inline-block;
+
+    color: #aa5e79;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 18px;
+}
+
+.memory-story h3 {
+
+    margin:
+        0 0 22px;
+
+    color: #3d2830;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(32px,4vw,48px);
+
+    line-height: 1.15;
+
+    font-weight: 400;
+}
+
+.memory-story h3 span {
+
+    display: block;
+
+    color: #ad607b;
+
+    font-family:
+        "Great Vibes",
+        cursive;
+
+    font-size: 1.15em;
+}
+
+.memory-story p {
+
+    color: #76646a;
+
+    font-size: 14px;
+
+    line-height: 2;
+
+    max-width: 470px;
+}
+
+.memory-signature {
+
+    margin-top: 25px;
+
+    color: #a86a7e;
+
+    font-family:
+        "Great Vibes",
+        cursive;
+
+    font-size: 22px;
+}
+
+
+/* =====================================================
+   VIDEO
+===================================================== */
+
+.video-memory {
+    overflow: hidden;
+}
+
+.memory-video {
+
+    display: block;
+
+    width: 100%;
+
+    aspect-ratio: 4 / 3;
+
+    object-fit: cover;
+}
+
+.video-memory video {
+
+    cursor: pointer;
+}
+
+
+/* =====================================================
+   ALBUM ENDING
+===================================================== */
+
+.memories-ending {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 650px;
+
+    margin:
+        20px auto 0;
+
+    text-align: center;
+}
+
+.ending-line {
+
+    width: 70px;
+
+    height: 1px;
+
+    margin:
+        0 auto 25px;
+
+    background: #b96b84;
+}
+
+.memories-ending > span {
+
+    color: #a85b76;
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    font-weight: 700;
+}
+
+.memories-ending h3 {
+
+    margin: 25px 0;
+
+    color: #3e2931;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 30px;
+
+    line-height: 1.5;
+
+    font-weight: 400;
+}
+
+.memories-ending h3 em {
+
+    display: block;
+
+    color: #ae607c;
+
+    font-family:
+        "Great Vibes",
+        cursive;
+
+    font-size: 1.4em;
+}
+
+.ending-heart {
+
+    color: #b75e7a;
+
+    font-size: 25px;
+
+    animation:
+        heartBeat
+        1.8s
+        ease-in-out
+        infinite;
+}
+
+@keyframes heartBeat {
+
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.25);
+    }
+
+}
+
+
+/* =====================================================
+   SCROLL REVEAL
+===================================================== */
+
+.reveal {
+
+    opacity: 0;
+
+    transform:
+        translateY(60px)
+        scale(.97);
+
+    transition:
+        opacity .9s ease,
+        transform .9s
+        cubic-bezier(.22,1,.36,1);
+}
+
+.reveal.show {
+
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* =====================================================
+   LIGHTBOX
+===================================================== */
+
+.memory-lightbox {
+
     position: fixed;
 
     inset: 0;
 
-    background: rgba(0,0,0,.85);
+    z-index: 999;
 
-    display: none;
+    display: flex;
 
     align-items: center;
+
     justify-content: center;
 
-    padding: 20px;
+    padding: 30px;
 
-    z-index: 2000;
+    background:
+        rgba(32,16,23,.94);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity .35s ease,
+        visibility .35s ease;
 }
 
-.lightbox.active {
-    display: flex;
+.memory-lightbox.active {
+
+    opacity: 1;
+
+    visibility: visible;
 }
 
-.lightbox img {
-    max-width: 95%;
-    max-height: 90vh;
+.memory-lightbox img {
 
-    border-radius: 12px;
+    max-width:
+        min(900px,92vw);
+
+    max-height: 85vh;
+
+    object-fit: contain;
+
+    border: 10px solid white;
+
+    box-shadow:
+        0 30px 80px
+        rgba(0,0,0,.4);
+
+    transform: scale(.85);
+
+    transition:
+        transform .4s ease;
 }
 
-.close-lightbox {
+.memory-lightbox.active img {
+
+    transform: scale(1);
+}
+
+.lightbox-close {
+
     position: absolute;
 
     top: 25px;
     right: 30px;
 
+    width: 45px;
+    height: 45px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.15);
+
     color: white;
 
-    font-size: 35px;
+    font-size: 32px;
 
-    cursor: pointer;
+    line-height: 1;
 }
 
-/* =========================
-   REVEAL
-========================= */
 
-.reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: 1s;
+/* =====================================================
+   MUSIC
+===================================================== */
+
+.music-section {
+
+    background: #24151e;
+
+    color: white;
 }
 
-.reveal.show {
-    opacity: 1;
-    transform: translateY(0);
+.music-section
+.section-title h2 {
+
+    color: #ffd1df;
 }
 
-/* =========================
-   FLOATING HEART
-========================= */
+.music-section
+.section-title p {
 
-.heart {
-    position: fixed;
-
-    bottom: -30px;
-
-    color: rgba(217,75,115,.3);
-
-    pointer-events: none;
-
-    animation: heartUp 6s linear forwards;
-
-    z-index: 1;
+    color: #c8a5b5;
 }
 
-@keyframes heartUp {
-    0% {
-        transform: translateY(0) scale(1);
-        opacity: 0;
-    }
+.music-card {
 
-    20% {
-        opacity: 1;
-    }
+    max-width: 850px;
 
-    100% {
-        transform: translateY(-110vh) scale(1.5);
-        opacity: 0;
-    }
+    margin: auto;
+
+    padding: 35px;
+
+    border:
+        1px solid
+        #ffffff20;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #4a293b,
+            #24151e
+        );
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 35px;
 }
 
-@keyframes floating {
+.music-album-cover {
+
+    width: 190px;
+    height: 190px;
+
+    flex-shrink: 0;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(#0003,#0003),
+        url("images/foto-musik.jpg")
+        center/cover;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 65px;
+
+    box-shadow:
+        0 12px 35px
+        #0005;
+}
+
+.music-info {
+    flex: 1;
+}
+
+.music-info h3 {
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 30px;
+
+    font-weight: 400;
+
+    margin: 10px 0;
+}
+
+.music-info p {
+
+    font-size: 13px;
+
+    color: #cda8b8;
+
+    line-height: 1.8;
+}
+
+.audio-player {
+
+    width: 100%;
+
+    margin-top: 22px;
+
+    height: 38px;
+}
+
+.music-note {
+
+    margin-top: 12px;
+
+    font-size: 11px;
+
+    color: #cda8b8;
+}
+
+
+/* =====================================================
+   CLOSING
+===================================================== */
+
+.closing {
+
+    min-height: 80vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    position: relative;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            #3b1e2dcc,
+            #3b1e2dcc
+        ),
+        url("images/foto-penutup.jpg")
+        center/cover;
+}
+
+.closing-content {
+
+    max-width: 700px;
+
+    padding: 30px 20px;
+}
+
+.closing-heart {
+
+    color: #ffabc5;
+
+    font-size: 80px;
+
+    animation:
+        denyut
+        2s
+        infinite;
+}
+
+.closing h2 {
+
+    font-family:
+        "Great Vibes",
+        cursive;
+
+    font-weight: 400;
+
+    font-size:
+        clamp(45px,8vw,85px);
+
+    line-height: 1.2;
+
+    color: #ffd2e0;
+
+    margin: 25px 0;
+}
+
+.closing p {
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+
+    color: #f9dce7;
+}
+
+footer {
+
+    background: #24151e;
+
+    color: #b88a9e;
+
+    text-align: center;
+
+    padding: 25px;
+
+    font-size: 12px;
+}
+
+@keyframes denyut {
+
     0%,100% {
-        transform: translateY(0);
+        transform: scale(1);
     }
 
     50% {
-        transform: translateY(-15px);
+        transform: scale(1.15);
     }
+
 }
 
-/* =========================
-   MOBILE
-========================= */
 
-@media (max-width: 768px) {
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 800px) {
 
     .navbar {
-        padding: 0 5%;
+        padding: 22px 5%;
     }
-
-    .logo {
-        font-size: 15px;
-    }
-
-    .music-btn {
-        padding: 8px 12px;
-        font-size: 12px;
-    }
+    .hero::before {
+    background-size: contain;
+    background-position: center center;
+}
 
     .hero {
-        padding: 90px 18px 50px;
+        min-height: 100svh;
+
+        padding:
+            90px 18px
+            40px;
+    }
+
+    .birthday-balloons {
+
+        top: 7%;
+        right: 3%;
+
+        transform:
+            scale(.55)
+            rotate(5deg);
+    }
+
+    .head-character {
+
+        left: -25px;
+
+        bottom: 2%;
+
+        width: 145px;
+
+        opacity: .9;
     }
 
     .hero h1 {
-        font-size: 32px;
+        font-size: 40px;
     }
 
-    .hero p {
-        font-size: 15px;
+    .mini-title {
+        font-size: 20px;
     }
 
-    .head-photo {
-        width: 180px;
-    }
-
-    .balloon {
-        width: 38px;
-        height: 48px;
+    .hero-description {
         font-size: 13px;
+        max-width: 330px;
     }
 
-    section {
-        padding: 70px 5%;
+    .section {
+        padding: 75px 0;
     }
 
-    .section-title {
-        font-size: 27px;
+
+    /* ALBUM */
+
+    .memories-section {
+        padding:
+            100px 20px
+            80px;
     }
 
-    .letter {
-        padding: 25px;
+    .memories-header {
+        margin-bottom: 60px;
+    }
+
+    .memories-header h2 {
+        font-size: 48px;
+    }
+
+    .memories-album-cover {
+        margin-bottom: 110px;
+    }
+
+    .album-paper {
+        min-height: 350px;
+        padding: 35px 25px;
+    }
+
+    .album-cover-content h3 {
+        font-size: 35px;
+    }
+
+    .album-cover-content p {
+        font-size: 25px;
+    }
+
+    .memory-item {
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 45px;
+
+        margin-bottom: 110px;
+    }
+
+    .memory-photo,
+    .photo-left,
+    .photo-right {
+
+        width: 92%;
+
+        max-width: 430px;
+
+        align-self: center;
+    }
+
+    .memory-story {
+
+        width: 100%;
+
+        text-align: center;
+    }
+
+    .memory-story p {
+
+        margin:
+            0 auto;
+    }
+
+    .memory-story h3 span {
+        display: inline;
+    }
+
+    .memory-number {
+
+        font-size: 75px;
+
+        top: -35px;
+    }
+
+
+    /* MUSIC */
+
+    .music-card {
+
+        flex-direction: column;
+
+        text-align: center;
+
+        padding: 25px 18px;
+    }
+
+    .music-album-cover {
+
+        width: 180px;
+        height: 180px;
+    }
+
+    .music-info h3 {
+        font-size: 26px;
+    }
+
+    .music-note {
+        text-align: left;
+    }
+
+
+    /* LETTER */
+
+    .letter p {
         font-size: 15px;
+        line-height: 1.9;
     }
 
-    .memory-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-    }
-
-    .memory-card img,
-    .memory-card video {
-        height: 190px;
-    }
-
-    .closing {
-        min-height: 70vh;
-    }
 }
+
 
 @media (max-width: 480px) {
 
-    .head-photo {
-        width: 160px;
+    .birthday-balloons {
+
+        top: 5%;
+        right: -5%;
+
+        transform:
+            scale(.45)
+            rotate(5deg);
     }
 
-    .memory-grid {
-        grid-template-columns: 1fr;
+    .head-character {
+        width: 120px;
+        left: -25px;
     }
 
-    .memory-card img,
-    .memory-card video {
-        height: 260px;
+    .hero h1 {
+        font-size: 35px;
     }
+
+    .album-paper {
+        min-height: 320px;
+    }
+
+    .album-flower {
+        font-size: 35px;
+    }
+
+    .flower-left {
+        left: 20px;
+        bottom: 20px;
+    }
+
+    .flower-right {
+        right: 20px;
+        top: 25px;
+    }
+
+    .album-stamp {
+        width: 42px;
+        height: 42px;
+
+        right: 20px;
+        bottom: 20px;
+
+        font-size: 16px;
+    }
+
+    .memory-photo {
+
+        padding:
+            9px 9px
+            40px;
+    }
+
+    .photo-heart {
+        bottom: 8px;
+        right: 14px;
+    }
+
+    .memories-ending h3 {
+        font-size: 25px;
+    }
+
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    * {
+        animation: none !important;
+
+        transition: none !important;
+
+        scroll-behavior: auto !important;
+    }
+
 }
 
 </style>
 </head>
 
+
 <body>
 
-<!-- =========================
+
+<!-- =====================================================
+     FLOATING HEARTS
+===================================================== -->
+
+<div class="hearts" aria-hidden="true">
+
+    <span>♡</span>
+    <span>♥</span>
+    <span>♡</span>
+    <span>♥</span>
+    <span>♡</span>
+
+</div>
+
+
+<!-- =====================================================
      NAVBAR
-========================= -->
+===================================================== -->
 
 <nav class="navbar">
 
     <div class="logo">
-        ♥ For You, Anggi
+        ♥ For You,
+        <span>Anggi</span>
     </div>
 
-    <button class="music-btn" onclick="toggleMusic()" id="musicBtn">
-        🎵 Musik
+    <button
+        class="music-toggle"
+        id="musicToggle"
+        aria-label="Putar atau jeda musik"
+    >
+        ♫
     </button>
 
 </nav>
 
 
-<!-- =========================
+<!-- =====================================================
      HERO
-========================= -->
+===================================================== -->
 
-<section class="hero">
+<section class="hero" id="home">
+
+
+    <div class="hero-glow glow-1"></div>
+    <div class="hero-glow glow-2"></div>
+
+
+    <!-- BALON 20 -->
+
+    <div class="birthday-balloons">
+
+        <div class="balloon balloon-2">
+            <span>2</span>
+            <i></i>
+        </div>
+
+        <div class="balloon balloon-0">
+            <span>0</span>
+            <i></i>
+        </div>
+
+    </div>
+
+
+    <!-- BALON KECIL -->
+
+    <div class="small-balloons">
+
+        <span>🎈</span>
+        <span>🎈</span>
+        <span>🎈</span>
+        <span>🎈</span>
+
+    </div>
+
+
+    <!-- KEPALA -->
+
+    <div
+        class="head-character"
+        id="headCharacter"
+    >
+
+        <img
+            src="images/kepala.png"
+            alt="Anggi"
+        >
+
+    </div>
+
+
+    <!-- HERO HEARTS -->
+
+    <div class="hero-hearts">
+
+        <span>♡</span>
+        <span>♥</span>
+        <span>♡</span>
+        <span>♥</span>
+        <span>♡</span>
+        <span>♥</span>
+
+    </div>
+
+
+    <!-- CONTENT -->
 
     <div class="hero-content">
 
+        <div class="eyebrow">
+            ✦ A LITTLE BIRTHDAY SURPRISE ✦
+        </div>
+
+        <div class="mini-title">
+            Today is your special day
+        </div>
+
         <h1>
-            Happy Birthday<br>
-            Anggi Nazwa Purnama Sayangku ♥
+
+            Happy Birthday
+
+            <span>
+                Anggi Nazwa Purnama
+            </span>
+
+            <small>
+                Sayangku ♥
+            </small>
+
         </h1>
 
-        <p>
-            Hari ini adalah hari spesial untuk seseorang yang sangat berarti.
+        <p class="hero-description">
+
+            Hari ini bukan hari biasa...
+            <br>
+
+            karena seseorang yang sangat spesial
+            sedang bertambah usia. 💗
+
         </p>
 
 
-        <!-- SATU FOTO SAJA -->
-
-        <div class="head-photo-wrapper">
-
-            <img
-                src="images/kepala.jpg"
-                alt="Anggi"
-                class="head-photo"
-            >
-
-        </div>
+        <button
+            class="primary-button"
+            id="openGift"
+        >
+            ♡ &nbsp; Buka Hadiah
+        </button>
 
 
-        <!-- BALON 20 -->
+        <div class="scroll-hint">
 
-        <div class="balloons">
+            Ada sesuatu yang ingin kusampaikan
 
-            <div class="balloon">2</div>
-            <div class="balloon">0</div>
+            <span>↓</span>
 
         </div>
-
-
-        <a href="#letter" class="btn-love">
-            Buka Surat Untukmu ❤️
-        </a>
 
     </div>
 
 </section>
 
 
-<!-- =========================
-     LETTER
-========================= -->
+<!-- =====================================================
+     GIFT CONTENT
+===================================================== -->
 
-<section id="letter">
+<div
+    id="giftContent"
+    class="hidden"
+>
 
-    <h2 class="section-title reveal">
-        Untuk Anggi ❤️
-    </h2>
 
-    <div class="letter reveal">
+<!-- =====================================================
+     SURAT
+===================================================== -->
 
-        <p>
-            Hai Anggi sayang...
-        </p>
+<section class="section letter-section">
 
-        <p>
-            Selamat ulang tahun untuk seseorang yang begitu berarti
-            dalam hidupku. Semoga di umur yang baru ini kamu selalu
-            diberikan kesehatan, kebahagiaan, dan segala hal baik
-            yang kamu inginkan.
-        </p>
+    <div class="section-title">
 
-        <p>
-            Aku mungkin nggak selalu bisa memberikan sesuatu yang
-            sempurna, tapi aku ingin kamu tahu kalau aku selalu
-            berusaha memberikan yang terbaik untukmu.
-        </p>
+        <div class="eyebrow">
+            A letter for you
+        </div>
+
+        <h2>
+            Surat Untukmu
+        </h2>
 
         <p>
-            Terima kasih sudah menjadi bagian dari cerita hidupku.
-            Terima kasih untuk semua senyum, tawa, perhatian,
-            dan momen-momen kecil yang ternyata sangat berarti.
+            Beberapa kata sederhana dari hati
+            untuk seseorang yang sangat berarti.
         </p>
 
-        <p>
-            Semoga semua impianmu satu per satu bisa tercapai.
-            Jangan pernah berhenti menjadi Anggi yang aku kenal,
-            seseorang yang punya senyum indah dan selalu punya
-            tempat spesial di hatiku.
-        </p>
+    </div>
+
+
+    <article class="letter">
+
+        <div class="letter-top">
+            Untuk Anggi, sayangku...
+        </div>
+
 
         <p>
-            Sekali lagi, selamat ulang tahun sayang.
-            Semoga hari ini menjadi salah satu hari yang paling
-            indah untukmu.
+            Selamat ulang tahun, Anggi Nazwa Purnama Sayangku. 💗
         </p>
+
+
+        <p>
+            Semoga di usia barumu ini, semua hal baik
+            datang menghampirimu. Semoga kamu selalu
+            diberi kesehatan, kebahagiaan, dan kemudahan
+            dalam setiap langkahmu.
+        </p>
+
+
+        <p>
+            Terima kasih sudah hadir dan menjadi bagian
+            yang begitu berarti. Terima kasih untuk setiap
+            senyum, cerita, dan momen kecil yang membuat
+            hari-hari terasa lebih indah.
+        </p>
+
+
+        <p>
+            Aku mungkin tidak selalu bisa memberikan
+            sesuatu yang besar, tetapi aku ingin kamu tahu
+            bahwa kamu sangat berharga.
+        </p>
+
+
+        <p>
+            Semoga semua impianmu satu per satu
+            menjadi kenyataan.
+        </p>
+
+
+        <p>
+            Sekali lagi, selamat ulang tahun, sayangku.
+            Semoga bahagia selalu menyertaimu.
+            Aku sayang kamu. ♥
+        </p>
+
 
         <div class="signature">
-            Dengan penuh sayang ❤️
+            Dengan penuh cinta ♡
         </div>
 
-    </div>
+    </article>
 
 </section>
 
 
-<!-- =========================
-     MEMORIES
-========================= -->
+<!-- =====================================================
+     ALBUM KENANGAN
+===================================================== -->
 
-<section id="memories">
-
-    <h2 class="section-title reveal">
-        Our Memories 📸
-    </h2>
-
-
-    <div class="memory-grid">
+<section
+    class="memories-section"
+    id="memories"
+>
 
 
-        <div class="memory-card reveal">
+    <!-- DECORATION -->
+
+    <div class="memories-bg">
+
+        <span>♡</span>
+        <span>✦</span>
+        <span>♡</span>
+        <span>✧</span>
+        <span>♥</span>
+
+    </div>
+
+
+    <!-- HEADER -->
+
+    <div class="memories-header reveal">
+
+        <div class="memories-label">
+            ✦ OUR MEMORIES ✦
+        </div>
+
+        <h2>
+
+            Cerita kecil
+
+            <span>
+                tentang kita
+            </span>
+
+        </h2>
+
+        <p>
+
+            Beberapa momen mungkin terlihat sederhana,
+            tapi bersamamu semuanya terasa istimewa.
+
+        </p>
+
+    </div>
+
+
+    <!-- COVER ALBUM -->
+
+    <div
+        class="memories-album-cover reveal"
+    >
+
+        <div class="album-paper">
+
+            <div class="album-tape"></div>
+
+            <div class="album-flower flower-left">
+                ✿
+            </div>
+
+            <div class="album-flower flower-right">
+                ✿
+            </div>
+
+
+            <div class="album-cover-content">
+
+                <span class="album-small">
+                    A COLLECTION OF
+                </span>
+
+                <h3>
+
+                    Our Little
+
+                    <strong>
+                        Memories
+                    </strong>
+
+                </h3>
+
+                <div class="album-line"></div>
+
+                <p>
+                    Anggi &nbsp;♡&nbsp; Me
+                </p>
+
+                <span class="album-date">
+                    six little moments
+                </span>
+
+            </div>
+
+
+            <div class="album-stamp">
+                ♥
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         MEMORY 01
+    ================================================= -->
+
+    <div class="memory-item reveal">
+
+        <div class="memory-number">
+            01
+        </div>
+
+
+        <div class="memory-photo photo-left">
+
+            <div class="photo-tape"></div>
 
             <img
                 src="images/love.jpg"
-                alt="Memory"
-                onclick="openLightbox(this.src)"
+                alt="Kenangan pertama"
+                class="memory-image"
             >
+
+            <span class="photo-heart">
+                ♡
+            </span>
 
         </div>
 
 
-        <div class="memory-card reveal">
+        <div class="memory-story">
+
+            <span class="memory-label">
+                THE BEGINNING
+            </span>
+
+            <h3>
+
+                Awal dari
+
+                <span>
+                    semuanya
+                </span>
+
+            </h3>
+
+            <p>
+
+                Mungkin saat itu kita belum tahu
+                akan sejauh apa cerita ini berjalan.
+                Tapi ternyata, dari sebuah momen
+                sederhana lahir banyak cerita yang
+                ingin selalu aku ingat.
+
+            </p>
+
+            <div class="memory-signature">
+                — our first little story ♡
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         MEMORY 02
+    ================================================= -->
+
+    <div class="memory-item reveal">
+
+        <div class="memory-number">
+            02
+        </div>
+
+
+        <div class="memory-story">
+
+            <span class="memory-label">
+                LITTLE MOMENT
+            </span>
+
+            <h3>
+
+                Senyum yang
+
+                <span>
+                    aku suka
+                </span>
+
+            </h3>
+
+            <p>
+
+                Ada banyak hal yang mungkin biasa
+                saja bagi orang lain. Tapi entah
+                kenapa, melihat senyummu selalu
+                punya cara sendiri untuk membuat
+                hariku menjadi lebih baik.
+
+            </p>
+
+            <div class="memory-signature">
+                — you make my days better ♡
+            </div>
+
+        </div>
+
+
+        <div class="memory-photo photo-right">
+
+            <div class="photo-tape"></div>
 
             <img
                 src="images/lovee.jpg"
-                alt="Memory"
-                onclick="openLightbox(this.src)"
+                alt="Kenangan kedua"
+                class="memory-image"
             >
+
+            <span class="photo-heart">
+                ♥
+            </span>
 
         </div>
 
+    </div>
 
-        <div class="memory-card reveal">
 
-            <video controls>
+    <!-- =================================================
+         MEMORY 03 VIDEO
+    ================================================= -->
+
+    <div class="memory-item reveal">
+
+        <div class="memory-number">
+            03
+        </div>
+
+
+        <div class="memory-photo photo-left video-memory">
+
+            <div class="photo-tape"></div>
+
+            <video
+                class="memory-video"
+                autoplay
+                muted
+                loop
+                playsinline
+                controls
+            >
 
                 <source
                     src="images/love3.mp4"
                     type="video/mp4"
                 >
 
+                Browser kamu tidak mendukung video.
+
             </video>
 
         </div>
 
 
-        <div class="memory-card reveal">
+        <div class="memory-story">
 
-            <img
-                src="images/love4.jpg"
-                alt="Memory"
-                onclick="openLightbox(this.src)"
-            >
+            <span class="memory-label">
+                MOVING MEMORY
+            </span>
+
+            <h3>
+
+                Kalau sebuah foto
+
+                <span>
+                    bisa bercerita
+                </span>
+
+            </h3>
+
+            <p>
+
+                Momen seperti ini rasanya ingin
+                disimpan lebih lama. Bukan karena
+                semuanya sempurna, tapi karena
+                ada kamu di dalamnya.
+
+            </p>
+
+            <div class="memory-signature">
+                — one moment, forever remembered ♡
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         MEMORY 04
+    ================================================= -->
+
+    <div class="memory-item reveal">
+
+        <div class="memory-number">
+            04
+        </div>
+
+
+        <div class="memory-story">
+
+            <span class="memory-label">
+                TOGETHER
+            </span>
+
+            <h3>
+
+                Tentang kita
+
+                <span>
+                    yang sederhana
+                </span>
+
+            </h3>
+
+            <p>
+
+                Tidak harus selalu pergi ke tempat
+                yang jauh. Tidak harus selalu
+                melakukan sesuatu yang besar.
+                Kadang cukup bersama kamu saja
+                sudah terasa spesial.
+
+            </p>
+
+            <div class="memory-signature">
+                — anywhere is special with you ♡
+            </div>
 
         </div>
 
 
-        <div class="memory-card reveal">
+        <div class="memory-photo photo-right">
 
-            <video controls>
+            <div class="photo-tape"></div>
+
+            <img
+                src="images/love4.jpg"
+                alt="Kenangan keempat"
+                class="memory-image"
+            >
+
+            <span class="photo-heart">
+                ♡
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         MEMORY 05 VIDEO
+    ================================================= -->
+
+    <div class="memory-item reveal">
+
+        <div class="memory-number">
+            05
+        </div>
+
+
+        <div class="memory-photo photo-left video-memory">
+
+            <div class="photo-tape"></div>
+
+            <video
+                class="memory-video"
+                autoplay
+                muted
+                loop
+                playsinline
+                controls
+            >
 
                 <source
                     src="images/love5.mp4"
                     type="video/mp4"
                 >
 
+                Browser kamu tidak mendukung video.
+
             </video>
 
         </div>
 
 
-        <div class="memory-card reveal">
+        <div class="memory-story">
+
+            <span class="memory-label">
+                ONE MORE
+            </span>
+
+            <h3>
+
+                Momen yang
+
+                <span>
+                    ingin kuulang
+                </span>
+
+            </h3>
+
+            <p>
+
+                Kalau waktu bisa diulang,
+                mungkin aku akan memilih
+                untuk menikmati setiap detiknya
+                sedikit lebih lama.
+
+            </p>
+
+            <div class="memory-signature">
+                — let's make more memories ♡
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         MEMORY 06
+    ================================================= -->
+
+    <div class="memory-item reveal">
+
+        <div class="memory-number">
+            06
+        </div>
+
+
+        <div class="memory-story">
+
+            <span class="memory-label">
+                FOREVER
+            </span>
+
+            <h3>
+
+                Dan semoga
+
+                <span>
+                    masih banyak lagi
+                </span>
+
+            </h3>
+
+            <p>
+
+                Enam kenangan mungkin belum
+                seberapa dibanding cerita yang
+                masih ingin kita buat.
+
+                Semoga nanti album ini
+                tidak berhenti di sini.
+
+            </p>
+
+            <div class="memory-signature">
+                — to be continued... ♡
+            </div>
+
+        </div>
+
+
+        <div class="memory-photo photo-right">
+
+            <div class="photo-tape"></div>
 
             <img
                 src="images/love6.jpg"
-                alt="Memory"
-                onclick="openLightbox(this.src)"
+                alt="Kenangan keenam"
+                class="memory-image"
             >
+
+            <span class="photo-heart">
+                ♥
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         ENDING ALBUM
+    ================================================= -->
+
+    <div class="memories-ending reveal">
+
+        <div class="ending-line"></div>
+
+        <span>
+            AND THIS IS JUST THE BEGINNING
+        </span>
+
+        <h3>
+
+            Masih banyak cerita
+
+            <em>
+                yang ingin aku tulis bersamamu.
+            </em>
+
+        </h3>
+
+        <div class="ending-heart">
+            ♥
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     LIGHTBOX
+===================================================== -->
+
+<div
+    class="memory-lightbox"
+    id="memoryLightbox"
+>
+
+    <button
+        class="lightbox-close"
+        id="lightboxClose"
+    >
+        ×
+    </button>
+
+    <img
+        id="lightboxImage"
+        src=""
+        alt="Kenangan"
+    >
+
+</div>
+
+
+<!-- =====================================================
+     MUSIC
+===================================================== -->
+
+<section class="section music-section">
+
+    <div class="section-title">
+
+        <div class="eyebrow">
+            A song for you
+        </div>
+
+        <h2>
+            Lagu Untukmu 🎶
+        </h2>
+
+        <p>
+            Biarkan lagu ini menemani setiap detik
+            dari kejutan kecil ini.
+        </p>
+
+    </div>
+
+
+    <div class="music-card">
+
+        <div class="music-album-cover">
+            ♡
+        </div>
+
+
+        <div class="music-info">
+
+            <div class="eyebrow">
+                Special song
+            </div>
+
+            <h3>
+                Lagu Untuk Anggi
+            </h3>
+
+            <p>
+                Karena kamu adalah salah satu
+                alasan di balik senyum hari ini.
+            </p>
+
+
+            <audio
+                id="audioPlayer"
+                class="audio-player"
+                controls
+                loop
+            >
+
+                <source
+                    src="music/lagu.mp3"
+                    type="audio/mpeg"
+                >
+
+                Browser kamu tidak mendukung
+                pemutar audio.
+
+            </audio>
+
+
+            <div class="music-note">
+                ♫ Putar lagu sambil membaca surat ini.
+            </div>
 
         </div>
 
@@ -815,221 +3279,377 @@ section {
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      CLOSING
-========================= -->
+===================================================== -->
 
 <section class="closing">
 
-    <div class="closing-content reveal">
+    <div class="closing-content">
+
+        <div class="closing-heart">
+            ♡
+        </div>
+
+        <div class="eyebrow">
+            One last thing
+        </div>
 
         <h2>
-            Happy Birthday, Sayang ❤️
+            Terima kasih sudah hadir
+            dalam hidupku.
         </h2>
 
         <p>
-            Semoga setiap langkahmu selalu dipenuhi kebahagiaan,
-            dan semoga aku masih bisa menjadi bagian dari
-            perjalanan indahmu.
+
+            Semoga kebahagiaan selalu menyertaimu,
+            seperti kamu yang selalu punya tempat
+            istimewa di hatiku.
+
         </p>
 
-        <br>
 
-        <p>
-            I love you ❤️
-        </p>
+        <button
+            class="primary-button"
+            id="backHome"
+        >
+            ⌂ Kembali ke Awal
+        </button>
 
     </div>
 
 </section>
 
 
-<!-- =========================
-     LIGHTBOX
-========================= -->
-
-<div class="lightbox" id="lightbox">
-
-    <span
-        class="close-lightbox"
-        onclick="closeLightbox()"
-    >
-        ×
-    </span>
-
-    <img
-        id="lightboxImg"
-        src=""
-        alt="Preview"
-    >
-
 </div>
 
 
-<!-- =========================
-     MUSIC
-========================= -->
+<footer>
+    Dibuat dengan cinta untuk
+    Anggi Nazwa Purnama Sayangku 💗
+</footer>
 
-<audio
-    id="bgMusic"
-    loop
->
 
-    <source
-        src="music/lagu.mp3"
-        type="audio/mpeg"
-    >
-
-</audio>
-
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
 
 <script>
 
-/* =========================
-   MUSIC
-========================= */
 
-const music = document.getElementById("bgMusic");
-const musicBtn = document.getElementById("musicBtn");
+/* =====================================================
+   KEPALA MENGIKUTI MOUSE
+===================================================== */
 
-let musicPlaying = false;
+const headCharacter =
+    document.getElementById("headCharacter");
 
-function toggleMusic() {
+if (headCharacter) {
 
-    if (musicPlaying) {
+    document.addEventListener(
+        "mousemove",
+        function(e) {
 
-        music.pause();
+            const x =
+                (
+                    e.clientX /
+                    window.innerWidth -
+                    0.5
+                ) * 18;
 
-        musicBtn.innerHTML = "🎵 Musik";
+            const y =
+                (
+                    e.clientY /
+                    window.innerHeight -
+                    0.5
+                ) * 12;
 
-        musicPlaying = false;
+            headCharacter.style.transform =
+                `
+                translate(${x}px, ${y}px)
+                rotate(${x / 5}deg)
+                `;
 
-    } else {
+        }
+    );
 
-        music.play();
+}
 
-        musicBtn.innerHTML = "⏸️ Pause";
 
-        musicPlaying = true;
+/* =====================================================
+   BUKA HADIAH
+===================================================== */
+
+const openGift =
+    document.getElementById("openGift");
+
+const giftContent =
+    document.getElementById("giftContent");
+
+
+openGift.addEventListener(
+    "click",
+    function() {
+
+        giftContent.classList.remove("hidden");
+
+        openGift.textContent =
+            "Hadiah Terbuka 💗";
+
+        openGift.disabled = true;
+
+        giftContent.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
 
     }
-
-}
-
-
-/* =========================
-   LIGHTBOX
-========================= */
-
-function openLightbox(src) {
-
-    const lightbox = document.getElementById("lightbox");
-    const image = document.getElementById("lightboxImg");
-
-    image.src = src;
-
-    lightbox.classList.add("active");
-
-}
+);
 
 
-function closeLightbox() {
+/* =====================================================
+   KEMBALI KE AWAL
+===================================================== */
 
-    document
-        .getElementById("lightbox")
-        .classList.remove("active");
-
-}
+const backHome =
+    document.getElementById("backHome");
 
 
-document
-    .getElementById("lightbox")
-    .addEventListener("click", function(e) {
+backHome.addEventListener(
+    "click",
+    function() {
 
-        if (e.target === this) {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
 
-            closeLightbox();
+        openGift.textContent =
+            "♡ Buka Hadiah";
+
+        openGift.disabled = false;
+
+    }
+);
+
+
+/* =====================================================
+   MUSIK
+===================================================== */
+
+const audioPlayer =
+    document.getElementById("audioPlayer");
+
+const musicToggle =
+    document.getElementById("musicToggle");
+
+
+musicToggle.addEventListener(
+    "click",
+    function() {
+
+        if (audioPlayer.paused) {
+
+            audioPlayer.play()
+                .then(function() {
+
+                    musicToggle.textContent = "Ⅱ";
+
+                })
+                .catch(function() {
+
+                    alert(
+                        "Silakan pilih atau putar musik terlebih dahulu."
+                    );
+
+                });
+
+        } else {
+
+            audioPlayer.pause();
+
+            musicToggle.textContent = "♫";
 
         }
 
-    });
+    }
+);
 
 
-document.addEventListener("keydown", function(e) {
+audioPlayer.addEventListener(
+    "play",
+    function() {
 
-    if (e.key === "Escape") {
-
-        closeLightbox();
+        musicToggle.textContent = "Ⅱ";
 
     }
+);
 
-});
+
+audioPlayer.addEventListener(
+    "pause",
+    function() {
+
+        musicToggle.textContent = "♫";
+
+    }
+);
 
 
-/* =========================
-   SCROLL REVEAL
-========================= */
+/* =====================================================
+   SCROLL REVEAL ALBUM
+===================================================== */
 
-const reveals = document.querySelectorAll(".reveal");
+const revealElements =
+    document.querySelectorAll(".reveal");
 
-function revealOnScroll() {
 
-    const windowHeight = window.innerHeight;
+const revealObserver =
+    new IntersectionObserver(
+        function(entries) {
 
-    reveals.forEach(function(element) {
+            entries.forEach(
+                function(entry) {
 
-        const top = element.getBoundingClientRect().top;
+                    if (
+                        entry.isIntersecting
+                    ) {
 
-        if (top < windowHeight - 80) {
+                        entry.target
+                            .classList
+                            .add("show");
 
-            element.classList.add("show");
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+
+revealElements.forEach(
+    function(element) {
+
+        revealObserver.observe(element);
+
+    }
+);
+
+
+/* =====================================================
+   LIGHTBOX FOTO
+===================================================== */
+
+const memoryImages =
+    document.querySelectorAll(
+        ".memory-image"
+    );
+
+const memoryLightbox =
+    document.getElementById(
+        "memoryLightbox"
+    );
+
+const lightboxImage =
+    document.getElementById(
+        "lightboxImage"
+    );
+
+const lightboxClose =
+    document.getElementById(
+        "lightboxClose"
+    );
+
+
+memoryImages.forEach(
+    function(image) {
+
+        image.addEventListener(
+            "click",
+            function() {
+
+                lightboxImage.src =
+                    image.src;
+
+                lightboxImage.alt =
+                    image.alt;
+
+                memoryLightbox
+                    .classList
+                    .add("active");
+
+                document.body.style.overflow =
+                    "hidden";
+
+            }
+        );
+
+    }
+);
+
+
+/* CLOSE */
+
+function closeMemoryLightbox() {
+
+    memoryLightbox
+        .classList
+        .remove("active");
+
+    document.body.style.overflow = "";
+
+}
+
+
+lightboxClose.addEventListener(
+    "click",
+    closeMemoryLightbox
+);
+
+
+memoryLightbox.addEventListener(
+    "click",
+    function(e) {
+
+        if (
+            e.target ===
+            memoryLightbox
+        ) {
+
+            closeMemoryLightbox();
 
         }
 
-    });
-
-}
-
-window.addEventListener("scroll", revealOnScroll);
-
-revealOnScroll();
+    }
+);
 
 
-/* =========================
-   FLOATING HEART
-========================= */
+/* ESC */
 
-function createHeart() {
+document.addEventListener(
+    "keydown",
+    function(e) {
 
-    const heart = document.createElement("div");
+        if (
+            e.key === "Escape" &&
+            memoryLightbox
+                .classList
+                .contains("active")
+        ) {
 
-    heart.className = "heart";
+            closeMemoryLightbox();
 
-    heart.innerHTML = "♥";
+        }
 
-    heart.style.left =
-        Math.random() * 100 + "vw";
-
-    heart.style.fontSize =
-        (12 + Math.random() * 20) + "px";
-
-    heart.style.animationDuration =
-        (4 + Math.random() * 4) + "s";
-
-    document.body.appendChild(heart);
-
-
-    setTimeout(function() {
-
-        heart.remove();
-
-    }, 8000);
-
-}
-
-setInterval(createHeart, 1800);
+    }
+);
 
 </script>
+
 
 </body>
 </html>
