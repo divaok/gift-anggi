@@ -12,7 +12,6 @@
 
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-
 <style>
 
 /* =====================================================
@@ -184,16 +183,20 @@ button {
 
 /* =====================================================
    HERO
+   FOTO UTUH + BACKGROUND BLUR
 ===================================================== */
 
 .hero {
+
     min-height: 100vh;
+    min-height: 100svh;
 
     position: relative;
 
     overflow: hidden;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -203,23 +206,153 @@ button {
 
     padding: 100px 20px 60px;
 
+    background: #321c27;
+}
+
+
+/* =====================================================
+   BACKGROUND BLUR
+===================================================== */
+
+.hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -45px;
+
+    background:
+        url("images/foto-utama.jpg")
+        center center / cover
+        no-repeat;
+
+    filter: blur(28px);
+
+    transform: scale(1.12);
+
+    opacity: .9;
+
+    z-index: 0;
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   OVERLAY
+===================================================== */
+
+.hero::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
     background:
         linear-gradient(
             135deg,
-            rgba(48,20,34,.88),
-            rgba(111,43,70,.72)
-        ),
-        url("images/foto-utama.jpg")
-        center/cover no-repeat;
-}
-.hero > * {
-    position: relative;
-    z-index: 2;
+            rgba(35,15,25,.68),
+            rgba(100,35,60,.45)
+        );
+
+    z-index: 1;
+
+    pointer-events: none;
 }
 
-.hero-content {
+
+/* =====================================================
+   FOTO UTAMA - FULL
+===================================================== */
+
+.hero-photo {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 2;
+
+    pointer-events: none;
+}
+
+.hero-photo img {
+
+    width: auto;
+
+    height: auto;
+
+    max-width: 92%;
+
+    max-height: 88%;
+
+    object-fit: contain;
+
+    display: block;
+
+    border-radius: 5px;
+
+    box-shadow:
+        0 25px 80px
+        rgba(0,0,0,.38);
+
+    filter:
+        drop-shadow(
+            0 10px 30px
+            rgba(0,0,0,.25)
+        );
+}
+
+
+/* =====================================================
+   OVERLAY DI ATAS FOTO
+===================================================== */
+
+.hero-photo::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(20,8,15,.12),
+            rgba(20,8,15,.30)
+        );
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   HERO CHILDREN
+===================================================== */
+
+.hero > * {
     position: relative;
-    z-index: 5;
+}
+
+
+/* =====================================================
+   HERO CONTENT
+===================================================== */
+
+.hero-content {
+
+    position: relative;
+
+    z-index: 6;
 
     max-width: 850px;
 
@@ -229,56 +362,13 @@ button {
         ease;
 }
 
-/* FOTO UTAMA AGAR TIDAK CROP */
 
-.hero::before {
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(48,20,34,.45),
-            rgba(111,43,70,.35)
-        ),
-        url("images/foto-utama.jpg")
-        center center / contain
-        no-repeat;
-
-    z-index: 0;
-
-    pointer-events: none;
-}
-
-
-/* LAPISAN GELAP AGAR TEKS TETAP TERBACA */
-
-.hero::after {
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(35,15,25,.30),
-            rgba(100,35,60,.18)
-        );
-
-    z-index: 1;
-
-    pointer-events: none;
-}
-
-
-/* GLOW */
+/* =====================================================
+   GLOW
+===================================================== */
 
 .hero-glow {
+
     position: absolute;
 
     border-radius: 50%;
@@ -286,48 +376,67 @@ button {
     filter: blur(20px);
 
     pointer-events: none;
+
+    z-index: 3;
 }
 
 .glow-1 {
+
     width: 350px;
     height: 350px;
 
-    background: rgba(255,139,178,.22);
+    background:
+        rgba(255,139,178,.22);
 
     top: -150px;
     left: -100px;
 
-    animation: glowMove 7s ease-in-out infinite;
+    animation:
+        glowMove
+        7s
+        ease-in-out
+        infinite;
 }
 
 .glow-2 {
+
     width: 300px;
     height: 300px;
 
-    background: rgba(255,203,221,.15);
+    background:
+        rgba(255,203,221,.15);
 
     bottom: -130px;
     right: -80px;
 
-    animation: glowMove 9s ease-in-out infinite reverse;
+    animation:
+        glowMove
+        9s
+        ease-in-out
+        infinite reverse;
 }
 
 @keyframes glowMove {
 
     0%,100% {
-        transform: translate(0,0);
+        transform:
+            translate(0,0);
     }
 
     50% {
-        transform: translate(40px,30px);
+        transform:
+            translate(40px,30px);
     }
 
 }
 
 
-/* BALON 20 */
+/* =====================================================
+   BALON 20
+===================================================== */
 
 .birthday-balloons {
+
     position: absolute;
 
     top: 8%;
@@ -337,12 +446,14 @@ button {
 
     gap: 12px;
 
-    z-index: 2;
+    z-index: 4;
 
-    transform: rotate(5deg);
+    transform:
+        rotate(5deg);
 }
 
 .balloon {
+
     position: relative;
 
     width: 105px;
@@ -358,9 +469,14 @@ button {
     justify-content: center;
 
     box-shadow:
-        inset -15px -20px 25px rgba(0,0,0,.12),
-        inset 10px 10px 20px rgba(255,255,255,.25),
-        0 15px 35px rgba(0,0,0,.2);
+        inset -15px -20px 25px
+        rgba(0,0,0,.12),
+
+        inset 10px 10px 20px
+        rgba(255,255,255,.25),
+
+        0 15px 35px
+        rgba(0,0,0,.2);
 
     animation:
         balloonFloat
@@ -370,7 +486,10 @@ button {
 }
 
 .balloon span {
-    font-family: "Playfair Display", serif;
+
+    font-family:
+        "Playfair Display",
+        serif;
 
     font-size: 75px;
 
@@ -379,10 +498,12 @@ button {
     color: white;
 
     text-shadow:
-        3px 5px 5px rgba(0,0,0,.2);
+        3px 5px 5px
+        rgba(0,0,0,.2);
 }
 
 .balloon-2 {
+
     background:
         radial-gradient(
             circle at 30% 20%,
@@ -393,6 +514,7 @@ button {
 }
 
 .balloon-0 {
+
     background:
         radial-gradient(
             circle at 30% 20%,
@@ -405,6 +527,7 @@ button {
 }
 
 .balloon i {
+
     position: absolute;
 
     bottom: -45px;
@@ -412,7 +535,8 @@ button {
     width: 1px;
     height: 50px;
 
-    background: rgba(255,255,255,.6);
+    background:
+        rgba(255,255,255,.6);
 }
 
 @keyframes balloonFloat {
@@ -432,14 +556,17 @@ button {
 }
 
 
-/* SMALL BALLOONS */
+/* =====================================================
+   SMALL BALLOONS
+===================================================== */
 
 .small-balloons span {
+
     position: absolute;
 
     font-size: 35px;
 
-    z-index: 2;
+    z-index: 4;
 
     animation:
         smallBalloon
@@ -488,17 +615,21 @@ button {
 }
 
 
-/* CHARACTER */
+/* =====================================================
+   CHARACTER
+===================================================== */
 
 .head-character {
+
     position: absolute;
 
     left: 5%;
+
     bottom: 7%;
 
     width: 230px;
 
-    z-index: 3;
+    z-index: 5;
 
     transition:
         transform .15s ease-out;
@@ -511,6 +642,7 @@ button {
 }
 
 .head-character img {
+
     width: 100%;
 
     display: block;
@@ -539,36 +671,30 @@ button {
 }
 
 
-/* HERO CONTENT */
-
-.hero-content {
-    position: relative;
-
-    z-index: 5;
-
-    max-width: 850px;
-
-    animation:
-        heroAppear
-        1.2s
-        ease;
-}
+/* =====================================================
+   HERO CONTENT
+===================================================== */
 
 @keyframes heroAppear {
 
     from {
         opacity: 0;
-        transform: translateY(35px);
+
+        transform:
+            translateY(35px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
     }
 
 }
 
 .eyebrow {
+
     font-size: 11px;
 
     letter-spacing: 4px;
@@ -585,6 +711,7 @@ button {
 }
 
 .mini-title {
+
     margin-top: 18px;
 
     font-family:
@@ -597,6 +724,7 @@ button {
 }
 
 .hero h1 {
+
     font-family:
         "Playfair Display",
         serif;
@@ -608,7 +736,8 @@ button {
 
     font-weight: 500;
 
-    margin: 12px 0 20px;
+    margin:
+        12px 0 20px;
 
     text-shadow:
         0 10px 30px
@@ -616,6 +745,7 @@ button {
 }
 
 .hero h1 span {
+
     display: block;
 
     font-family:
@@ -630,6 +760,7 @@ button {
 }
 
 .hero h1 small {
+
     display: block;
 
     font-family:
@@ -644,6 +775,7 @@ button {
 }
 
 .hero-description {
+
     max-width: 550px;
 
     margin: auto;
@@ -656,16 +788,19 @@ button {
 }
 
 
-/* HERO HEARTS */
+/* =====================================================
+   HERO HEARTS
+===================================================== */
 
 .hero-hearts span {
+
     position: absolute;
 
     color: #ffb5cc66;
 
     font-size: 30px;
 
-    z-index: 2;
+    z-index: 4;
 
     animation:
         heartFloat
@@ -712,6 +847,7 @@ button {
 @keyframes heartFloat {
 
     0% {
+
         transform:
             translateY(0)
             rotate(0);
@@ -724,6 +860,7 @@ button {
     }
 
     100% {
+
         transform:
             translateY(-110vh)
             rotate(360deg);
@@ -734,9 +871,12 @@ button {
 }
 
 
-/* BUTTON */
+/* =====================================================
+   BUTTON
+===================================================== */
 
 .primary-button {
+
     position: relative;
 
     border: none;
@@ -750,7 +890,8 @@ button {
 
     color: white;
 
-    padding: 16px 34px;
+    padding:
+        16px 34px;
 
     border-radius: 50px;
 
@@ -770,12 +911,14 @@ button {
 }
 
 .primary-button:hover {
+
     transform:
         translateY(-4px)
         scale(1.03);
 }
 
 .primary-button:before {
+
     content: "";
 
     position: absolute;
@@ -802,6 +945,7 @@ button {
 }
 
 .scroll-hint {
+
     margin-top: 35px;
 
     font-size: 11px;
@@ -812,6 +956,7 @@ button {
 }
 
 .scroll-hint span {
+
     display: block;
 
     font-size: 22px;
@@ -842,7 +987,9 @@ button {
 ===================================================== */
 
 .section {
-    width: min(1100px,92%);
+
+    width:
+        min(1100px,92%);
 
     margin: auto;
 
@@ -850,12 +997,14 @@ button {
 }
 
 .section-title {
+
     text-align: center;
 
     margin-bottom: 55px;
 }
 
 .section-title h2 {
+
     font-family:
         "Playfair Display",
         serif;
@@ -871,9 +1020,11 @@ button {
 }
 
 .section-title p {
+
     max-width: 540px;
 
-    margin: 15px auto 0;
+    margin:
+        15px auto 0;
 
     color: var(--muted);
 
@@ -888,6 +1039,7 @@ button {
 ===================================================== */
 
 .letter-section {
+
     background:
         radial-gradient(
             circle at 10% 20%,
@@ -898,6 +1050,7 @@ button {
 }
 
 .letter {
+
     max-width: 800px;
 
     margin: auto;
@@ -915,7 +1068,8 @@ button {
         url("images/kertas.jpg")
         center/cover;
 
-    border: 1px solid #ead9c9;
+    border:
+        1px solid #ead9c9;
 
     box-shadow:
         0 20px 60px
@@ -925,6 +1079,7 @@ button {
 }
 
 .letter:before {
+
     content: "♥";
 
     position: absolute;
@@ -941,6 +1096,7 @@ button {
 }
 
 .letter:after {
+
     content: "❀";
 
     position: absolute;
@@ -954,6 +1110,7 @@ button {
 }
 
 .letter-top {
+
     font-family:
         "Great Vibes",
         cursive;
@@ -966,6 +1123,7 @@ button {
 }
 
 .letter p {
+
     font-family:
         "Playfair Display",
         serif;
@@ -980,6 +1138,7 @@ button {
 }
 
 .signature {
+
     font-family:
         "Great Vibes",
         cursive;
@@ -995,7 +1154,7 @@ button {
 
 
 /* =====================================================
-   ALBUM KENANGAN
+   ALBUM
 ===================================================== */
 
 .memories-section {
@@ -1025,10 +1184,8 @@ button {
         #f8efec;
 }
 
-
-/* DECORATION */
-
 .memories-bg {
+
     position: absolute;
 
     inset: 0;
@@ -1037,6 +1194,7 @@ button {
 }
 
 .memories-bg span {
+
     position: absolute;
 
     color:
@@ -1083,12 +1241,14 @@ button {
 @keyframes memoryFloat {
 
     0%,100% {
+
         transform:
             translateY(0)
             rotate(0);
     }
 
     50% {
+
         transform:
             translateY(-18px)
             rotate(10deg);
@@ -1100,6 +1260,7 @@ button {
 /* HEADER */
 
 .memories-header {
+
     position: relative;
 
     z-index: 2;
@@ -1114,6 +1275,7 @@ button {
 }
 
 .memories-label {
+
     color: #a85c78;
 
     font-size: 11px;
@@ -1126,6 +1288,7 @@ button {
 }
 
 .memories-header h2 {
+
     margin: 0;
 
     color: #39242c;
@@ -1143,6 +1306,7 @@ button {
 }
 
 .memories-header h2 span {
+
     display: block;
 
     color: #b4617e;
@@ -1157,6 +1321,7 @@ button {
 }
 
 .memories-header p {
+
     max-width: 520px;
 
     margin:
@@ -1221,7 +1386,8 @@ button {
         0 35px 70px
         rgba(72,35,46,.16);
 
-    transform: rotate(-2deg);
+    transform:
+        rotate(-2deg);
 }
 
 .album-paper:before {
@@ -1366,7 +1532,8 @@ button {
     left: 35px;
     bottom: 35px;
 
-    transform: rotate(-20deg);
+    transform:
+        rotate(-20deg);
 }
 
 .flower-right {
@@ -1374,7 +1541,8 @@ button {
     right: 35px;
     top: 40px;
 
-    transform: rotate(20deg);
+    transform:
+        rotate(20deg);
 }
 
 .album-stamp {
@@ -1402,7 +1570,8 @@ button {
 
     font-size: 20px;
 
-    transform: rotate(12deg);
+    transform:
+        rotate(12deg);
 }
 
 
@@ -1674,7 +1843,6 @@ button {
 }
 
 .video-memory video {
-
     cursor: pointer;
 }
 
@@ -1858,7 +2026,8 @@ button {
         0 30px 80px
         rgba(0,0,0,.4);
 
-    transform: scale(.85);
+    transform:
+        scale(.85);
 
     transition:
         transform .4s ease;
@@ -1866,7 +2035,8 @@ button {
 
 .memory-lightbox.active img {
 
-    transform: scale(1);
+    transform:
+        scale(1);
 }
 
 .lightbox-close {
@@ -2129,20 +2299,54 @@ footer {
 @media (max-width: 800px) {
 
     .navbar {
-        padding: 22px 5%;
+
+        padding:
+            22px 5%;
     }
-    .hero::before {
-    background-size: contain;
-    background-position: center center;
-}
+
+
+    /* HERO */
 
     .hero {
+
         min-height: 100svh;
 
         padding:
             90px 18px
             40px;
     }
+
+
+    /* FOTO UTAMA HP */
+
+    .hero-photo img {
+
+        max-width: 94%;
+
+        max-height: 76%;
+
+        border-radius: 4px;
+
+        box-shadow:
+            0 20px 55px
+            rgba(0,0,0,.38);
+    }
+
+
+    /* BACKGROUND BLUR HP */
+
+    .hero::before {
+
+        inset: -35px;
+
+        filter: blur(24px);
+
+        transform:
+            scale(1.15);
+    }
+
+
+    /* BALON */
 
     .birthday-balloons {
 
@@ -2153,6 +2357,9 @@ footer {
             scale(.55)
             rotate(5deg);
     }
+
+
+    /* CHARACTER */
 
     .head-character {
 
@@ -2165,6 +2372,9 @@ footer {
         opacity: .9;
     }
 
+
+    /* TEXT */
+
     .hero h1 {
         font-size: 40px;
     }
@@ -2174,9 +2384,14 @@ footer {
     }
 
     .hero-description {
+
         font-size: 13px;
+
         max-width: 330px;
     }
+
+
+    /* SECTION */
 
     .section {
         padding: 75px 0;
@@ -2186,6 +2401,7 @@ footer {
     /* ALBUM */
 
     .memories-section {
+
         padding:
             100px 20px
             80px;
@@ -2204,8 +2420,11 @@ footer {
     }
 
     .album-paper {
+
         min-height: 350px;
-        padding: 35px 25px;
+
+        padding:
+            35px 25px;
     }
 
     .album-cover-content h3 {
@@ -2271,7 +2490,8 @@ footer {
 
         text-align: center;
 
-        padding: 25px 18px;
+        padding:
+            25px 18px;
     }
 
     .music-album-cover {
@@ -2292,12 +2512,18 @@ footer {
     /* LETTER */
 
     .letter p {
+
         font-size: 15px;
+
         line-height: 1.9;
     }
 
 }
 
+
+/* =====================================================
+   HP KECIL
+===================================================== */
 
 @media (max-width: 480px) {
 
@@ -2312,13 +2538,26 @@ footer {
     }
 
     .head-character {
+
         width: 120px;
+
         left: -25px;
     }
 
     .hero h1 {
         font-size: 35px;
     }
+
+
+    /* FOTO HP KECIL */
+
+    .hero-photo img {
+
+        max-width: 96%;
+
+        max-height: 70%;
+    }
+
 
     .album-paper {
         min-height: 320px;
@@ -2329,16 +2568,19 @@ footer {
     }
 
     .flower-left {
+
         left: 20px;
         bottom: 20px;
     }
 
     .flower-right {
+
         right: 20px;
         top: 25px;
     }
 
     .album-stamp {
+
         width: 42px;
         height: 42px;
 
@@ -2356,6 +2598,7 @@ footer {
     }
 
     .photo-heart {
+
         bottom: 8px;
         right: 14px;
     }
@@ -2374,6 +2617,7 @@ footer {
 @media (prefers-reduced-motion: reduce) {
 
     * {
+
         animation: none !important;
 
         transition: none !important;
@@ -2412,8 +2656,10 @@ footer {
 <nav class="navbar">
 
     <div class="logo">
+
         ♥ For You,
         <span>Anggi</span>
+
     </div>
 
     <button
@@ -2431,10 +2677,26 @@ footer {
      HERO
 ===================================================== -->
 
-<section class="hero" id="home">
+<section
+    class="hero"
+    id="home"
+>
+
+
+    <!-- FOTO UTAMA FULL -->
+
+    <div class="hero-photo">
+
+        <img
+            src="images/foto-utama.jpg"
+            alt="Foto Anggi"
+        >
+
+    </div>
 
 
     <div class="hero-glow glow-1"></div>
+
     <div class="hero-glow glow-2"></div>
 
 
@@ -2443,13 +2705,19 @@ footer {
     <div class="birthday-balloons">
 
         <div class="balloon balloon-2">
+
             <span>2</span>
+
             <i></i>
+
         </div>
 
         <div class="balloon balloon-0">
+
             <span>0</span>
+
             <i></i>
+
         </div>
 
     </div>
@@ -2525,6 +2793,7 @@ footer {
         <p class="hero-description">
 
             Hari ini bukan hari biasa...
+
             <br>
 
             karena seseorang yang sangat spesial
@@ -2568,7 +2837,9 @@ footer {
      SURAT
 ===================================================== -->
 
-<section class="section letter-section">
+<section
+    class="section letter-section"
+>
 
     <div class="section-title">
 
@@ -2581,8 +2852,10 @@ footer {
         </h2>
 
         <p>
+
             Beberapa kata sederhana dari hati
             untuk seseorang yang sangat berarti.
+
         </p>
 
     </div>
@@ -2601,38 +2874,48 @@ footer {
 
 
         <p>
+
             Semoga di usia barumu ini, semua hal baik
             datang menghampirimu. Semoga kamu selalu
             diberi kesehatan, kebahagiaan, dan kemudahan
             dalam setiap langkahmu.
+
         </p>
 
 
         <p>
+
             Terima kasih sudah hadir dan menjadi bagian
             yang begitu berarti. Terima kasih untuk setiap
             senyum, cerita, dan momen kecil yang membuat
             hari-hari terasa lebih indah.
+
         </p>
 
 
         <p>
+
             Aku mungkin tidak selalu bisa memberikan
             sesuatu yang besar, tetapi aku ingin kamu tahu
             bahwa kamu sangat berharga.
+
         </p>
 
 
         <p>
+
             Semoga semua impianmu satu per satu
             menjadi kenyataan.
+
         </p>
 
 
         <p>
+
             Sekali lagi, selamat ulang tahun, sayangku.
             Semoga bahagia selalu menyertaimu.
             Aku sayang kamu. ♥
+
         </p>
 
 
@@ -2890,7 +3173,11 @@ footer {
         </div>
 
 
-        <div class="memory-photo photo-left video-memory">
+        <div
+            class="memory-photo
+                   photo-left
+                   video-memory"
+        >
 
             <div class="photo-tape"></div>
 
@@ -3023,7 +3310,11 @@ footer {
         </div>
 
 
-        <div class="memory-photo photo-left video-memory">
+        <div
+            class="memory-photo
+                   photo-left
+                   video-memory"
+        >
 
             <div class="photo-tape"></div>
 
@@ -3206,7 +3497,9 @@ footer {
      MUSIC
 ===================================================== -->
 
-<section class="section music-section">
+<section
+    class="section music-section"
+>
 
     <div class="section-title">
 
@@ -3219,8 +3512,10 @@ footer {
         </h2>
 
         <p>
+
             Biarkan lagu ini menemani setiap detik
             dari kejutan kecil ini.
+
         </p>
 
     </div>
@@ -3244,8 +3539,10 @@ footer {
             </h3>
 
             <p>
+
                 Karena kamu adalah salah satu
                 alasan di balik senyum hari ini.
+
             </p>
 
 
@@ -3295,8 +3592,10 @@ footer {
         </div>
 
         <h2>
+
             Terima kasih sudah hadir
             dalam hidupku.
+
         </h2>
 
         <p>
@@ -3324,8 +3623,10 @@ footer {
 
 
 <footer>
+
     Dibuat dengan cinta untuk
     Anggi Nazwa Purnama Sayangku 💗
+
 </footer>
 
 
@@ -3398,8 +3699,11 @@ openGift.addEventListener(
         openGift.disabled = true;
 
         giftContent.scrollIntoView({
+
             behavior: "smooth",
+
             block: "start"
+
         });
 
     }
@@ -3419,8 +3723,11 @@ backHome.addEventListener(
     function() {
 
         window.scrollTo({
+
             top: 0,
+
             behavior: "smooth"
+
         });
 
         openGift.textContent =
@@ -3450,11 +3757,14 @@ musicToggle.addEventListener(
         if (audioPlayer.paused) {
 
             audioPlayer.play()
+
                 .then(function() {
 
-                    musicToggle.textContent = "Ⅱ";
+                    musicToggle.textContent =
+                        "Ⅱ";
 
                 })
+
                 .catch(function() {
 
                     alert(
@@ -3467,7 +3777,8 @@ musicToggle.addEventListener(
 
             audioPlayer.pause();
 
-            musicToggle.textContent = "♫";
+            musicToggle.textContent =
+                "♫";
 
         }
 
@@ -3479,7 +3790,8 @@ audioPlayer.addEventListener(
     "play",
     function() {
 
-        musicToggle.textContent = "Ⅱ";
+        musicToggle.textContent =
+            "Ⅱ";
 
     }
 );
@@ -3489,14 +3801,15 @@ audioPlayer.addEventListener(
     "pause",
     function() {
 
-        musicToggle.textContent = "♫";
+        musicToggle.textContent =
+            "♫";
 
     }
 );
 
 
 /* =====================================================
-   SCROLL REVEAL ALBUM
+   SCROLL REVEAL
 ===================================================== */
 
 const revealElements =
@@ -3505,6 +3818,7 @@ const revealElements =
 
 const revealObserver =
     new IntersectionObserver(
+
         function(entries) {
 
             entries.forEach(
@@ -3524,9 +3838,11 @@ const revealObserver =
             );
 
         },
+
         {
             threshold: 0.12
         }
+
     );
 
 
@@ -3591,7 +3907,9 @@ memoryImages.forEach(
 );
 
 
-/* CLOSE */
+/* =====================================================
+   CLOSE LIGHTBOX
+===================================================== */
 
 function closeMemoryLightbox() {
 
@@ -3627,7 +3945,9 @@ memoryLightbox.addEventListener(
 );
 
 
-/* ESC */
+/* =====================================================
+   ESC CLOSE
+===================================================== */
 
 document.addEventListener(
     "keydown",
